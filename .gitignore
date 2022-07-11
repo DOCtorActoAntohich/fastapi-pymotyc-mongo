@@ -1,0 +1,23 @@
+# VS Code settings.
+.vscode
+
+# Jet Brains black magic.
+.idea
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+# Logs
+logs/
+*.log
+
+# Application data after launch (in project root).
+/storage/
