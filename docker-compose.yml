@@ -25,9 +25,6 @@ services:
      dockerfile: docker/Dockerfile
    ports:
      - '8000:8000'
-   volumes:
-     - ./storage/static:/static
-     - ./storage/migrations:/migrations/models
    env_file:
      - .env
    restart: always
