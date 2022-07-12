@@ -11,5 +11,5 @@ COPY ./backend ./backend
 
 # You can uncomment and use the given command instead of the last one.
 # (This isn't necessary though, this file can be safely deleted).
-CMD [ "python", "-m", "backend.launch"]
-# CMD [ "uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000" ]
+# CMD [ "python", "-m", "backend.launch"]
+CMD [ "uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000" ]
