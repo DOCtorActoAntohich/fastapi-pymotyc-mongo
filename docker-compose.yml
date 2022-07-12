@@ -1,0 +1,40 @@
+version: '3.3'
+
+services:
+
+  mongo_db:
+    container_name: ${MONGO_HOST}
+    image: 'mongo:4.2.21'
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./storage/mongo:/data/db:rw
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    restart: unless-stopped
+    networks:
+      nm_network:
+
+  backend_core:
+   container_name: 'backend'
+   depends_on:
+     - mongo_db
+   build:
+     context: .
+     dockerfile: docker/Dockerfile
+   ports:
+     - '8000:8000'
+   volumes:
+     - ./storage/static:/static
+     - ./storage/migrations:/migrations/models
+   env_file:
+     - .env
+   restart: always
+   networks:
+    nm_network:
+
+
+networks:
+  nm_network:
+    driver: bridge
